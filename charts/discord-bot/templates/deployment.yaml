@@ -40,7 +40,7 @@ spec:
       - name: {{ .Values.imagePullSecrets.secret }}
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ .Values.image }}
+        image: {{ .Values.image.name }}:{{ .Values.image.version }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         {{- with .Values.containers.secrets }}
         envFrom:

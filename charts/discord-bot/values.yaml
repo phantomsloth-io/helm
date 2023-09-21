@@ -12,7 +12,9 @@ containers:
 
 replicas: 1
 
-image: ghcr.io/phantomsloth-io/discord-bot:main
+image:
+  name: ghcr.io/phantomsloth-io/discord-bot
+  version: latest
 
 imagePullPolicy: Always
 
