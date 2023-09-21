@@ -6,9 +6,11 @@ containers:
   annotations: {}
   secrets:
   - secretRef: 
-      name: discord-secret
+    name: discord-secret
   - secretRef: 
-      name: nasa-secret
+    name: nasa-secret
+  - secretRef: 
+    name: plex-secret
 
 replicas: 1
 
