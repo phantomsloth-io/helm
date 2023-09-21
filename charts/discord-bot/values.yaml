@@ -14,7 +14,6 @@ replicas: 1
 
 image:
   name: ghcr.io/phantomsloth-io/discord-bot
-  version: latest
 
 imagePullPolicy: Always
 
