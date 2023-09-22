@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   discord-bot:
   - apiVersion: v2
+    created: "2023-09-22T16:01:10.44623372Z"
+    description: The Phantomsloth.io Discord-bot
+    digest: e3e76d50da85cee6cada7fb3efebbba942faea4155c0223807191980f2339273
+    name: discord-bot
+    type: application
+    urls:
+    - https://github.com/phantomsloth-io/helm/releases/download/discord-bot-1.1.4/discord-bot-1.1.4.tgz
+    version: 1.1.4
+  - apiVersion: v2
     created: "2023-09-22T02:10:53.616651318Z"
     description: The Phantomsloth.io Discord-bot
     digest: 161fd1d0d8af311a989a862ac85774136a1ee0a3446af58a4853aba93b59184c
@@ -91,4 +100,4 @@ entries:
     urls:
     - https://github.com/phantomsloth-io/helm/releases/download/discord-bot-0.1.1/discord-bot-0.1.1.tgz
     version: 0.1.1
-generated: "2023-09-22T02:10:53.616686717Z"
+generated: "2023-09-22T16:01:10.446469824Z"
