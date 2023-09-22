@@ -4,17 +4,13 @@ metadata:
   name: {{ .Chart.Name }}
   labels: 
     {{- if .Values.deployment.labels }}
-{{ toYaml .Values.deployment.labels | indent 4 }}
+{{ toYaml .Values.deployment.labels | indent 4}}
     {{- end }}
     app: {{ .Chart.Name }}
-    tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
+    tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ .Chart.Name }}
     tags.datadoghq.com/version: {{ .Chart.Version }}
     admission.datadoghq.com/enabled: "true"
-  annotations: 
-    {{- if .Values.deployment.annotations }}
-{{ tpl (toYaml .Values.deployment.annotations) . | indent 8 }}
-    {{- end }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
@@ -27,7 +23,7 @@ spec:
 {{ toYaml .Values.containers.labels | indent 8 }}
         {{- end }}
         app: {{ .Chart.Name }}
-        tags.datadoghq.com/env: {{ .Values.datadog.labels.env }}
+        tags.datadoghq.com/env: {{ .Values.environment }}
         tags.datadoghq.com/service: {{ .Chart.Name }}
         tags.datadoghq.com/version: {{ .Chart.Version }}
       annotations:
@@ -40,21 +36,24 @@ spec:
       - name: {{ .Values.imagePullSecrets.secret }}
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ .Values.image.name }}:{{ .Chart.Version }}
-        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        image: ghcr.io/phantomsloth-io/discord-bot:{{ .Values.containers.image.version | default .Chart.Version }}
+        imagePullPolicy: {{ .Values.imagePullPolicy | default "IfNotPresent" }}
         {{- with .Values.containers.secrets }}
         envFrom:
-          {{- toYaml . | nindent 10 }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
         env:
         - name: DD_PROFILING_ENABLED
-            value: "true"
+          value: {{ .Values.datadog.profiling | default "false" | quote }}
         - name: DD_LOGS_INJECTION
-            value: "true"
+          value: {{ .Values.datadog.logInjection | default "false" | quote }}
         - name: DD_APPSEC_ENABLED
-            value: "true"
+          value: {{ .Values.datadog.appSec | default "false" | quote }}
+        {{- if .Values.datadog.agentHost.enabled }}
         - name: DD_AGENT_HOST
-            valueFrom:
-              fieldRef:
-                apiVersion: v1
-                  fieldPath: status.hostIP
+          valueFrom: 
+            fieldRef:
+              apiVersion:
+                fieldPath: {{ .Values.datadog.agentHost.ip | default "status.hostIP" }}
+        {{- end }}
+
