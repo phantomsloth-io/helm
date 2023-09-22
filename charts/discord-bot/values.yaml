@@ -24,4 +24,4 @@ imagePullSecrets:
 
 datadog:
   labels:
-    env: Prod
+    env: production
