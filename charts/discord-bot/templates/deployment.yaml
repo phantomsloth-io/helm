@@ -51,9 +51,8 @@ spec:
           value: {{ .Values.datadog.appSec | default "false" | quote }}
         {{- if eq .Values.datadog.agentHost.enabled "true" }}
         - name: DD_AGENT_HOST
-          valueFrom: 
+          valueFrom:
             fieldRef:
-              apiVersion:
-                fieldPath: {{ .Values.datadog.agentHost.ip | default "status.hostIP" }}
+              fieldPath: {{ .Values.datadog.agentHost.ip | default "status.hostIP" }}
         {{- end }}
 
