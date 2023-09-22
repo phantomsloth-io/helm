@@ -48,13 +48,13 @@ spec:
         {{- end }}
         env:
         - name: DD_PROFILING_ENABLED
-          value: "true"
+            value: "true"
         - name: DD_LOGS_INJECTION
-          value: "true"
+            value: "true"
         - name: DD_APPSEC_ENABLED
-          value: "true"
+            value: "true"
         - name: DD_AGENT_HOST
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-                fieldPath: status.hostIP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                  fieldPath: status.hostIP
