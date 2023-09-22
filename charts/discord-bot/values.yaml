@@ -13,10 +13,13 @@ containers:
   secrets:
   - secretRef: 
       name: discord-secret
+      optional: "false"
   - secretRef: 
       name: nasa-secret
+      optional: "false"
   - secretRef: 
       name: plex-secret
+      optional: "false"
 
 replicas: 1
 
@@ -26,8 +29,8 @@ imagePullSecrets:
   secret: dockerconfigjson-github-com
 
 datadog:
-  profiling: true
-  logInjection: true
-  appSec: true
+  profiling: "true"
+  logInjection: "true"
+  appSec: "true"
   agentHost: 
-    enabled: true
+    enabled: "true"
