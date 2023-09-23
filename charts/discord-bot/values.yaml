@@ -13,13 +13,13 @@ containers:
   secrets:
   - secretRef: 
       name: discord-secret
-      optional: "false"
+      optional: false
   - secretRef: 
       name: nasa-secret
-      optional: "false"
+      optional: false
   - secretRef: 
       name: plex-secret
-      optional: "false"
+      optional: false
 
 replicas: 1
 
