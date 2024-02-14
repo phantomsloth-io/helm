@@ -181,4 +181,15 @@ entries:
     urls:
     - https://github.com/phantomsloth-io/helm/releases/download/discord-bot-0.1.1/discord-bot-0.1.1.tgz
     version: 0.1.1
-generated: "2023-10-12T01:08:38.552494154Z"
+  test:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-14T00:18:42.873754685Z"
+    description: A Helm chart for Kubernetes
+    digest: 9da09597e41fe4a79f957a7f3cd363cda6bb32aec9e71c4968f2e8d3738543d7
+    name: test
+    type: application
+    urls:
+    - https://github.com/phantomsloth-io/helm/releases/download/test-0.1.0/test-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-02-14T00:18:42.873809979Z"
